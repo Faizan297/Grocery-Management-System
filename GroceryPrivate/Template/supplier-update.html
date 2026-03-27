@@ -1,0 +1,295 @@
+{% extends "adminbase.html" %}
+{% block content %}
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+             <span style="font-size: 30px; font-weight: bold;">Supplier Update</span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/Supplier/</span>Update</h5>
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center"  style=" background-color: rgb(18, 2, 89); height: 50px;" >
+                      <h5 class="mb-0" style="color: white ;">Update</h5>
+                      <a href="{% url 'suppentry' %}"> <button style="border-radius: 10px; height: 35px; width: 110px; background-color: #00C2FF; color: #ffff; position: relative; left: 10px;font-size: 18px;">+ Add New</button> </a>
+                    </div>
+                  
+                    <div class="card-body" style="margin-top: 20px;">
+                    <form  method="post"  id="supplierentry">
+                          {% csrf_token %}
+                            <div class="row">
+                          <!-- <hr> -->
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">Entry Date</label>
+                          <div class="input-group input-group-merge">
+                            <span id="" class="input-group-text"
+                              ><i class="bx bx-calendar"></i
+                            ></span>
+                            <input
+                              value="{{data.updatedata.Entry_date|date:'Y-m-d' }}"
+                              name="Entry_Date"
+                              type="date"
+                              class="form-control"
+                              id="date"
+                              placeholder="created at"
+                              aria-label="created at"
+                              aria-describedby="created-at-icone"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">Supplier ID <span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="" class="input-group-text"
+                              ><i class="bx bx-user"></i
+                            ></span>
+                            <input
+                              value="{{data.updatedata.Supplier_ID}}"
+                              name="Supplier_ID"
+                              required
+                              type="text"
+                              class="form-control"
+                              id="cid"
+                              placeholder="Supplier Id"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">NAME <span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-user"></i></span>
+                            <input
+                              value="{{data.updatedata.Name}}"
+                              name="Supplier_Name"
+                              required
+                              type="text"
+                              id="sname"
+                              class="form-control"
+                              placeholder="Name"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                            <span class="error-msg"></span>
+                        </div>
+                      </div>
+                        <div class="row">
+                          <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-phone">Contact Number <span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="" class="input-group-text"
+                              ><i class="bx bx-phone"></i
+                            ></span>
+                            <input
+                              value="{{data.updatedata.Contact_Number}}"
+                              name="Contact_Number"
+                              required
+                              type="text"
+                              id="cont"
+                              class="form-control phone-mask"
+                              placeholder="Contact Number"
+                              aria-label="658 799 8941"
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                       
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">Email</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                            <input
+                              value="{{data.updatedata.Email}}"
+                              name="Email"
+                              type="text"
+                              id="email1"
+                              class="form-control"
+                              placeholder="Email"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">GST NUMBER<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="" class="input-group-text"
+                              ><i class="bx bx-calculator"></i
+                            ></span>
+                            <input
+                              value="{{data.updatedata.GST_Number}}"
+                              name="GST_Number"
+                              required
+                              type="text"
+                              class="form-control uppercase-input"
+                              id="gst" 
+                              placeholder="GST Number"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2" 
+                            />
+                            <!-- style="text-transform: uppercase;" -->
+                            
+                          </div>
+                           <span class="error-msg"></span>
+                        </div>
+                      </div>
+                         <div class="row">
+                                
+                        <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">Status <span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="" class="input-group-text">
+                                  <i class="bx bx-user"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                                  name="Status" 
+                                  required
+                                  id="status1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option value="" selected disabled>Select Status</option>
+                               <option value="Active" {% if data.updatedata.Status == "Active" %}selected{% endif %}>Active</option>
+                               <option value="Inactive" {% if data.updatedata.Status == "Inactive" %}selected{% endif %}>Inactive</option>
+                             </select>
+                             </div>
+                             </div>    
+                       </div>
+                     
+                        <b style="color: red;">Note:</b><span> Address :-</span><hr style="border: 1px solid ">
+                         <div class="row">
+                              <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">State<span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="" class="input-group-text">
+                                  <i class="bx bx-map"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                                  name="State" 
+                                  required
+                                  id="state1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option value="" selected disabled>Select State</option>
+                               <option value="Bihar" {% if data.updatedata.State == "Bihar" %}selected{% endif %}>Bihar</option>
+                               <option value="Up"{% if data.updatedata.State == "Up" %}selected{% endif %}>Up</option>
+                               <option value="Rajasthan"{% if data.updatedata.State == "Rajasthan" %}selected{% endif %}>Rajasthan</option>
+                               <option value="Maharashtra"{% if data.updatedata.State == "Maharashtra" %}selected{% endif %}>Maharashtra</option>
+                               <option value="West Bengal"{% if data.updatedata.State == "West Bengal" %}selected{% endif %}>West Bengal</option>
+                             </select>
+                             </div>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">District<span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="" class="input-group-text">
+                                  <i class="bx bx-buildings"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                                  name="District"
+                                  required 
+                                  id="district1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                                 <option selected disabled>Select District</option>
+                               <option value="Patna" {% if data.updatedata.District == "Patna" %}selected{% endif %}>Patna</option>
+                               <option value="Buxar"{% if data.updatedata.District == "Buxar" %}selected{% endif %}>Buxar</option>
+                             </select>
+                             </div>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">pin<span class="text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                              <span id="" class="input-group-text"> 
+                              <i class="bx bx-map-pin"></i>
+                              </span>
+                              <input
+                                value="{{data.updatedata.Pin}}"
+                                name="Pin"
+                                required
+                                type="text"
+                                class="form-control"
+                                id="pin1"
+                                placeholder="Pin Code"
+                                aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2"
+                              /> 
+
+                            </div>
+                            <span class="error-msg"></span>
+                          </div>
+                        </div>
+                       <div class="row">
+                           <div class="mb-3">
+                            <label class="form-label" for="basic-icon-default-message">Address <span class="text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                              <span id="" class="input-group-text"
+                                >
+                                <!-- <i class="bx bx-comment"></i
+                              > -->
+                            </span>
+                              <textarea
+                                name="Address"
+                                required
+                               style="resize: none;"
+                                id="Addressline"
+                                class="form-control"
+                                placeholder="ABC Palace ,123 Road"
+                                aria-label="Hi, Do you have a moment to talk Joe?"
+                                aria-describedby="basic-icon-default-message2"
+                              >{{data.updatedata.Address}}</textarea>
+                            </div>
+                          </div>
+                        </div>
+                         
+                          <button type="submit"  class="btn btn-success" id="s25" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-check" style="position: relative; left: -5px; top: -2px;"></i><b>Submit</b></button>
+                          <button type="reset" class="btn btn-danger" style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px;"></i><b>Reset</b></button>
+                    </form> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+                        
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+                {% comment %}  {% endcomment %}
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+   
+    <!-- SweetAlert v1 CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock content %}

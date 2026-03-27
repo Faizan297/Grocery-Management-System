@@ -1,0 +1,244 @@
+{% extends "adminbase.html" %}
+{% block content %}
+         <div class="content-wrapper">
+            <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y">
+              <span style="font-size: 30px; font-weight: bold;">Category</span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/Category/</span>Entry</h5>
+             <!-- Basic Layout -->
+            <div class="row">
+              <div class="col-xl">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center" style=" background-color: rgb(18, 2, 89); height: 50px;">
+                      <h4 class="mb-0" style="color: white;">Entry</h4>
+                           <a href="{% url 'category' %}"><button class="btn btn-light btn-sm service-btn">
+                            <i class="" style=" position: relative;left: 4px; top: -3px;"></i>
+                            <span>Service</span>
+                        </button></a>
+                      
+                    </div>
+                  <div class="card-body" style="margin-top: 20px;" >
+                    <form  method="post"  id="categoryentry">
+                      {% csrf_token %}
+                        <div class="row">
+                         <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">category ID <span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-category"></i></span>
+                            <input
+                              required
+                              name="category_ID"
+                              type="text"
+                              class="form-control"
+                              id="category"
+                              placeholder=" Category ID"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                           <span class="error-msg"></span>
+                         </div>
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email"> Category name <span class="text-danger">*</span></label>
+                           <div class="input-group input-group-merge">
+                            <span class="input-group-text"> <i class="menu-icon tf-icons bx bx-category"></i></span>
+                            <input
+                            required
+                              name="category_Name"
+                              type="text"
+                              id="sname"
+                              class="form-control"
+                              placeholder="Category Name"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                            <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
+                           </div> 
+                           <span class="error-msg"></span> 
+                          </div>
+                          <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-phone">user ID</label>
+                           <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-user"></i>
+                            </span>
+                            <input
+                              name="User_ID"
+                              type="text"
+                              id="uid"
+                              class="form-control phone-mask"
+                              placeholder="User ID "
+                              aria-label="658 799 8941"
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                           </div>
+                           <span class="error-msg"></span>
+                          </div>
+                        </div>
+                      
+                      <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">Order Id <span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-receipt"></i
+                                ></span>
+                            <input
+                              name="Order_ID"
+                              required
+                              type="text"
+                              id="order"
+                              class="form-control"
+                              maxlength="20"
+                              placeholder="Order ID"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div> 
+                        <div class="col-12 col-md-4 mb-3">
+                         <label class="form-label" for="basic-icon-default-fullname">Status <span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                              <i class="bx bx-user"></i>
+                            </span>
+                             <select class="form-select" 
+                                  name="status"
+                                  required
+                                  id="status1" 
+                                  aria-label="Status Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option value="" selected disabled>Select Status</option>
+                               <option value="Active">Active</option>
+                               <option value="Inactive">Inactive</option>
+                             </select>
+                          </div>
+                        </div> 
+                      </div>
+                      <div class="row">
+                          <div class="mb-3">
+                            <label class="form-label" for="basic-icon-default-message">Description</label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-message2" class="input-group-text"
+                                >
+                                <!-- <i class="bx bx-comment"></i
+                              > -->
+                            </span>
+                              <textarea
+                                name="Descrription"
+                                style="resize: none;"
+                                id="description"
+                                class="form-control"
+                                placeholder="Description"
+                                aria-label="Hi, Do you have a moment to talk Joe?"
+                                aria-describedby="basic-icon-default-message2"
+                              ></textarea>
+                            </div>
+                          </div>
+                      </div>
+                          <button type="submit"  class="btn btn-success" id="s1" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-check" style="position: relative; left: -5px; top: -2px;"></i><b>Submit</b></button>
+                          <button type="reset" class="btn btn-danger" style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px; "></i><b>Reset</b></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+                          
+                
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+
+
+
+                  <!-- <a
+                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Support</a
+                  > -->
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+   
+   <!-- SweetAlert v1 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      $('#categoryentry').submit(function (e) { 
+        e.preventDefault();
+        // console.log("Form Submit called ")
+        Swal.fire({
+        title: "Do you want to Insert Data ?",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        icon:"question"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            type: "POST",
+            url: "{% url 'catentry' %}",
+            data:{
+              'csrfmiddlewaretoken':$('input[name="csrfmiddlewaretoken"]').val(),
+              'category_ID'    :$('#category').val(),
+              'category_Name'  :$('#sname').val(),
+              'User_ID'        :$('#uid').val(),
+              'Order_ID'       :$('#order').val(),
+              'status'         :$('#status1').val(),
+              'Descrription'   :$('#description').val(),
+            },
+            success: function (response) {
+              // console.log(response);
+              if(response.success==200){
+                Swal.fire({
+                      title: response.title,
+                      text: response.message,
+                      icon: response.icon
+                      
+                    }).then(() => {
+                        $('#categoryentry')[0].reset();   //  Reset form here
+                    });
+              }
+              else{
+                 Swal.fire({
+                      title: response.title,
+                      text: response.message,
+                      icon: response.icon
+                      
+                   });
+              }
+              
+            }
+          });
+        }
+      });
+        
+      });
+    </script>
+    
+
+{% endblock content %}

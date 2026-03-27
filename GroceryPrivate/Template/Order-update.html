@@ -1,0 +1,249 @@
+{% extends "adminbase.html" %}
+{% block content %}
+         <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <span style="font-size: 30px; font-weight: bold;">Order</span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/Order/</span>Update</h5>
+              {% comment %} <a href="Order-entry.html"><button type="Entry" class="" style="width: 100px; height: 40px; position: relative; left: 1012px;top: -70px; background-color:#868686 ; border: 1px solid #868686; color: #fff; border-top-left-radius:10px ; border-bottom-left-radius:10px ;" >Entry</button></a>
+              <a href="Order-update.html"><button type="service" class="" style="width: 100px; height: 40px; position: relative; left: 1007px;top: -70px; background-color:  #17a2b8; border: 1px solid  #17a2b8; color: #fff;  border-top-right-radius:10px ; border-bottom-right-radius:10px ;" >Update</button></a> {% endcomment %}
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                   <div class="card-header d-flex justify-content-between align-items-center"style=" background-color: rgb(18, 2, 89); height: 50px;" >
+                      <h4 class="mb-0" style="color: white;">Update</h4>
+                      <a href="Order-entry.html"> <button style="border-radius: 10px; height: 35px; width: 110px; background-color: #00C2FF; color: #ffff; position: relative; left: 10px;font-size: 18px;">+ Add New</button> </a>
+                      
+                    </div>
+                  
+                    <div class="card-body" style="margin-top: 20px;">
+                      <form>
+                        <div class="row">
+                              <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">order date</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-calendar"></i
+                                ></span>
+                            <input
+                              type="date"
+                              id="date"
+                              class="form-control"
+                              placeholder="john123@gmail.com"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                        </div> 
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">Order ID</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-receipt"></i></span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="order"
+                              placeholder=" Order ID"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email"> User ID</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"> <i class="menu-icon tf-icons bx bx-user"></i></span>
+                            <input
+                              type="text"
+                              id="uid"
+                              class="form-control"
+                              placeholder="User ID"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                        
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                      </div>
+                      <form>
+                        <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-phone">Customer ID</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-user"></i></span>
+                            <input
+                              type="text"
+                              id="cid"
+                              class="form-control phone-mask"
+                              placeholder="Customer ID "
+                              aria-label="658 799 8941"
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                            <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">amount</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                                ></span>
+                            <input
+                              type="text"
+                              id="salary"
+                              class="form-control"
+                              placeholder="Total Amount"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div> 
+                           <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email"> disc amount</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                                ></span>
+                            <input
+                              type="text"
+                              id="disc"
+                              class="form-control"
+                              placeholder="Discount Amount"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                    </div>
+                      <div class="row">
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email"> tax</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-receipt"></i
+                                ></span>
+                            <input
+                              type="text"
+                              id="tax"
+                              class="form-control"
+                              placeholder="Tax"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email"> Pay amount</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                                ></span>
+                            <input
+                              type="text"
+                              id="pay"
+                              class="form-control"
+                              placeholder="Payable Amount"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                         <label class="form-label" for="basic-icon-default-fullname">Status</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                              <i class="bx bx-user"></i>
+                            </span>
+                             <select class="form-select" 
+                                  id="status1" 
+                                  aria-label="Status Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option selected disabled>Select Status</option>
+                               <option value="Active">Active</option>
+                               <option value="Inactive">Inactive</option>
+                             </select>
+                  
+                          </div>
+                        </div>
+                        </div> 
+                          <button type="submit"  class="btn btn-success" id="s9" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-edit" style="position: relative; left: -5px; top: -2px;"></i><b>Update</b></button>
+                          <button type="reset" class="btn btn-danger" style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px; "></i><b>Reset</b></button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                          
+                
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+
+
+
+                  <!-- <a
+                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Support</a
+                  > -->
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+   
+                <!-- SweetAlert v1 CDN -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      $(document).ready(function () {
+        const orderdate = localStorage.getItem('orderdate');
+        const orderid = localStorage.getItem('orderid');
+        const userId = localStorage.getItem('userId');
+        const customerid = localStorage.getItem('customerid'); 
+        const amount = localStorage.getItem('amount');
+        const discountamount = localStorage.getItem('discountamount');
+        const tax = localStorage.getItem('tax'); 
+        const payamount = localStorage.getItem('payamount');
+        const status = localStorage.getItem('status');
+        $('#date').val(orderdate);
+        $('#order').val(orderid);
+        $('#uid').val(userId);
+        $('#cid').val(customerid);
+        $('#salary').val(amount);
+        $('#disc').val(discountamount);
+        $('#tax').val(tax);
+        $('#pay').val(payamount);
+        $('#status1').val(status);
+      });
+    </script>
+{% endblock content %}

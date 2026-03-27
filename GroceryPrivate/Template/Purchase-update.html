@@ -1,0 +1,157 @@
+{% extends "adminbase.html" %}
+{% block content %}
+         <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <span style="font-size: 30px; font-weight: bold;">Purchase</span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/Purchase/</span>Update</h5>
+              {% comment %} <a href="Purchase-entry.html"><button type="Entry" class="" style="width: 100px; height: 40px; position: relative; left: 1012px;top: -70px; background-color:#868686 ; border: 1px solid #868686; color: #fff; border-top-left-radius:10px ; border-bottom-left-radius:10px ;" >Entry</button></a>
+              <a href="Purchase-update.html"><button type="service" class="" style="width: 100px; height: 40px; position: relative; left: 1007px;top: -70px; background-color:  #17a2b8; border: 1px solid  #17a2b8; color: #fff;  border-top-right-radius:10px ; border-bottom-right-radius:10px ;" >Update</button></a> {% endcomment %}
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                   <div class="card-header d-flex justify-content-between align-items-center"style=" background-color: rgb(18, 2, 89); height: 50px;" >
+                      <h4 class="mb-0" style="color: white;">Update</h4>
+                      <a href="category-entry.html"> <button style="border-radius: 10px; height: 35px; width: 110px; background-color: #00C2FF; color: #ffff; position: relative; left: 10px;font-size: 18px;">+ Add New</button> </a>
+                      
+                    </div>
+                  
+                    <div class="card-body" style="margin-top: 20px;">
+                      <form>
+                        <div class="row">
+                            <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-phone">purchase date</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-calendar"></i></span>
+                            <input
+                              type="date"
+                              id="date"
+                              class="form-control phone-mask"
+                              placeholder=" "
+                              aria-label="658 799 8941"
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">Purchase ID</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-cart"></i></span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="cid"
+                              placeholder=" Purchase ID"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email"> supplier ID</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"> <i class="menu-icon tf-icons bx bx-store"></i></span>
+                            <input
+                              type="text"
+                              id="uid"
+                              class="form-control"
+                              placeholder="Supplier ID"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                            <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                        
+                      </div>
+                      <form>
+                        <div class="row">
+                         <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">total amount</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-money"></i></span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="salary"
+                              placeholder=" Total Amount"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                    </div>
+                          <button type="submit"  class="btn btn-success" id="s21" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-edit" style="position: relative; left: -5px; top: -2px;"></i><b>Update</b></button>
+                          <button type="reset" class="btn btn-danger" style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px; "></i><b>Reset</b></button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                          
+                
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+
+
+
+                  <!-- <a
+                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Support</a
+                  > -->
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+   
+    <script>
+      $(document).ready(function () {
+        const purchase_date = localStorage.getItem('purchase_date');
+        const purchase_id = localStorage.getItem('purchase_id');
+        const supplier_id = localStorage.getItem('supplier_id');
+        const total_amount = localStorage.getItem('total_amount'); 
+        $('#date').val(purchase_date);
+        $('#cid').val(purchase_id);
+        $('#uid').val(supplier_id);
+        $('#salary').val(total_amount);
+      });
+    </script>
+                 <!-- SweetAlert v1 CDN -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock content %}

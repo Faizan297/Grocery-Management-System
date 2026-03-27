@@ -1,0 +1,670 @@
+{% extends "adminbase.html" %}
+{% block content %}
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+             <span style="font-size: 30px; font-weight: bold;">Registration Form</span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/User/</span>Entry</h5>
+              <!-- {% comment %} <a href=""><button type="Entry" class="" style="width: 100px; height: 40px; position: relative; left: 1000px;top: -70px; background-color:#868686 ; border: 1px solid #868686; color: #fff; border-top-left-radius:10px ; border-bottom-left-radius:10px ;" >Service</button></a>
+              <a href="User-service.html"><button type="service" class="" style="width: 100px; height: 40px; position: relative; left: 995px;top: -70px; background-color:  #17a2b8; border: 1px solid  #17a2b8; color: #fff;  border-top-right-radius:10px ; border-bottom-right-radius:10px ;" >Service</button></a> {% endcomment %} -->
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center"  style=" background-color: rgb(18, 2, 89); height: 50px;" >
+                      <h5 class="mb-0" style="color: white;">Entry</h5>
+                      <a href="{% url 'user' %}"><button class="btn btn-light btn-sm service-btn">
+                            <i class="" style=" position: relative;left: 4px; top: -3px;"></i>
+                            <span>Service</span>
+                        </button></a>
+                    </div>
+                  
+                    <div class="card-body" style="margin-top: 20px;">
+                      <form method="post" id="user-entry" enctype="multipart/form-data">
+                        {% csrf_token %}
+                          
+                        <div class="row">
+                          <!-- <hr> -->
+                            <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">Created at</label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text"
+                                  >
+                                  <i class="bx bx-calendar"></i
+                                >
+                              </span>
+                                <input
+                                  name="joining_date"
+                                  type="date"
+                                  class="form-control"
+                                  id="date"
+                                  placeholder="Created Date"
+                                  aria-label="John Doe"
+                                  aria-describedby="basic-icon-default-fullname2"
+                                /> 
+
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">User ID <span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text"
+                                  ><i class="bx bx-user"></i
+                                ></span>
+                                <input
+                                  name="user_id"
+                                  required
+                                  type="text"
+                                  class="form-control"
+                                  id="uid"
+                                  placeholder="User ID"
+                                  aria-label="John Doe"
+                                  aria-describedby="basic-icon-default-fullname2"
+                                /> 
+
+                              </div>
+                              <span class="error-msg"></span>
+                            </div>
+                           
+                                <div class="col-12 col-md-4 mb-3">
+                                  <label class="form-label" for="sname">Name <span class="text-danger">*</span></label>
+                                  <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-fullname2" class="input-group-text">
+                                      <i class="bx bx-user"></i>
+                                    </span>
+                                    <input
+                                      name="Name"
+                                      required
+                                      type="text"
+                                      class="form-control"
+                                      id="sname"
+                                      placeholder="Name"
+                                      aria-label="John Doe"
+                                      aria-describedby="basic-icon-default-fullname2"
+                                    /> 
+                                  </div>
+                                  <span class="error-msg"></span>
+                                </div>
+                            </div>
+                          
+                          <div class="row">
+                              <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">Father's Name <span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text"
+                                  ><i class="bx bx-user"></i
+                                ></span>
+                                <input
+                                  name="father_name"
+                                  required
+                                  type="text"
+                                  class="form-control"
+                                  id="fname"
+                                  placeholder="Father's Name"
+                                  aria-label="John Doe"
+                                  aria-describedby="basic-icon-default-fullname2"
+                                /> 
+
+                              </div>
+                               <span class="error-msg"></span>
+                             </div>
+                              <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">Mother's Name <span class="text-danger">*</span> </label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text"
+                                  ><i class="bx bx-user"></i
+                                ></span>
+                                <input
+                                  name="mother_name"
+                                  required
+                                  type="text"
+                                  class="form-control"
+                                  id="mname"
+                                  placeholder="Mother's Name"
+                                  aria-label="John Doe"
+                                  aria-describedby="basic-icon-default-fullname2"
+                                /> 
+
+                              </div>
+                               <span class="error-msg"></span>
+                             </div>
+                      
+                           <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">Gender</label>
+                            <div class="">
+                             <div style="display: flex; gap: 8px; margin-top: 7px;">
+                                 <input type="radio" checked name="gender" value="male" id="m1"> <label for="m1">Male</label> 
+                                 <input type="radio" name="gender" value="female" id="f1"> <label for="f1">Female</label> 
+                                 <input type="radio" name="gender" value="other" id="o1"> <label for="o1">Other's</label> 
+                              </div>
+                             
+                           </div>
+                          </div>
+                        </div> 
+                              <div class="row">
+                               <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">Date of Birth(DOB) <span class="text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text">
+                              
+                                  <i class="bx bx-calendar"></i
+                                >
+                             
+                            </span>
+                              <input
+                                name="DOB"
+                                required
+                                type="date"
+                                class="form-control"
+                                id="dob"
+                                placeholder=""
+                                aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2"
+                              /> 
+
+                            </div>
+                          </div>
+                            <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="cont">Contact Number <span class="text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-phone"></i></span>
+                                <input
+                                name="contact_number"
+                                required
+                                type="text"
+                                id="cont"
+                                class="form-control phone-mask"
+                                placeholder="Contact Number"
+                                aria-label="658 799 8941"
+                                aria-describedby="basic-icon-default-phone2"
+                              />
+
+                            </div>
+                             <span class="error-msg"></span>
+                           </div> 
+                             <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="cont2"> Alternate Number</label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                ><i class="bx bx-phone"></i></span>
+                                <input
+                                name="alternate_number"
+                                type="text"
+                                id="cont2"
+                                class="form-control phone-mask"
+                                placeholder="Alternate Number"
+                                aria-label="658 799 8941"
+                                aria-describedby="basic-icon-default-phone2"
+                              />
+
+                            </div>
+                            <span class="error-msg"></span>
+                          </div> 
+                        </div> 
+
+                          <div class="row">
+                          <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">Email ID <span class="text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                              <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                              <input
+                              required
+                                name="email"
+                                type="email"
+                                id="email1"
+                                class="form-control"
+                                placeholder="john123@gmail.com"
+                                aria-label="john.doe"
+                                aria-describedby="basic-icon-default-email2"
+                              />
+                              <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
+                            </div>
+                            </div>
+                            <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">Aadhaar Number <span class="text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"
+                                >
+                                <i class="bx bx-id-card"></i>
+                              </span>
+                              <input
+                              name="aadhaar_number"
+                              required
+                                type="text"
+                                class="form-control"
+                                id="aadhaar"
+                                placeholder="Aadhaar Number"
+                                aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2"
+                              /> 
+
+                            </div>
+                             <span class="error-msg"></span>
+                          </div>
+                            <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">Highest Qualification</label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"> 
+                              <i class="bx bx-briefcase"></i>
+                              </span>
+                              <input
+                                name="qualification"
+                                type="text"
+                                class="form-control"
+                                id="qualification"
+                                placeholder="Highest Qualification"
+                                aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2"
+                              /> 
+
+                            </div>
+                        </div>
+                      </div>
+                       <div class="row">
+                              <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">position<span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-briefcase"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                              required 
+                                  name="position"
+                                  id="position1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option  value="" selected disabled>Select Position</option>
+                               <option value="Salesman">Salesman</option>
+                               <option  value="Executive">Executive</option>
+                               <!-- <option value=""></option>
+                               <option value=""></option>
+                               <option value=""></option> -->
+                             </select>
+                             </div>
+                             </div>
+                              <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">Salary<span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text"
+                                  >
+                                  <i class="bx bx-money"></i
+                                >
+                              </span>
+                                <input
+                                name="salary"
+                                required
+                                  type="text"
+                                  class="form-control"
+                                  id="salary"
+                                  placeholder="Salary"
+                                  aria-label="John Doe"
+                                  aria-describedby="basic-icon-default-fullname2"
+                                /> 
+
+                              </div>
+                              <span class="error-msg"></span>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">Status <span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-user"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                              required
+                              name="status" 
+                                  id="status1" 
+                                  aria-label="Status Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option value="" selected disabled>Select Status</option>
+                               <option  value="Active">Active</option>
+                               <option  value="Inactive">Inactive</option>
+                             </select>
+                             </div>
+                             </div>
+
+                          </div>
+
+                      
+                      <b style="color: red;">Note:</b><span> Permanent Address!!</span><hr style="border: 1px solid ">
+                      <div class="row">
+                              <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">State <span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-map"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                              
+                                  required 
+                                  name="state_current"
+                                  id="state1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option value="" selected disabled>Select State</option>
+                               <option  value="Bihar">Bihar</option>
+                               <option  value="Up">Up</option>
+                               <option  value="Rajasthan">Rajasthan</option>
+                               <option  value="Maharashtra">Maharashtra</option>
+                               <option  value="West Bengal">West Bengal</option>
+                             </select>
+                             </div>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">District <span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-buildings"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                                  required 
+                                  name="district_current"
+                                  id="district1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option value="" selected disabled>Select District</option>
+                               <option  value="Patna">Patna</option>
+                               <option  value="Buxar">Buxar</option>
+                               <!-- <option value="Inactive"></option>
+                               <option value="Inactive"></option>
+                               <option value="Inactive"></option> -->
+                             </select>
+                             </div>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">pin <span class="text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"> 
+                              <i class="bx bx-map-pin"></i>
+                              </span>
+                              <input
+                               name="pin_current"
+                              required
+                                type="text"
+                                maxlength="6"
+                                class="form-control"
+                                id="pin1"
+                                placeholder="Pin Code"
+                                aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2"
+                              /> 
+
+                            </div>
+                            <span class="error-msg"></span>
+                        </div>
+                      </div>
+                              
+                           <div class="row">
+                           <div class="mb-3">
+                            <label class="form-label" for="basic-icon-default-message">Address <span class="text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-message2" class="input-group-text"
+                                >
+                                <!-- <i class="bx bx-comment"></i
+                              > -->
+                            </span>
+                              <textarea
+                              name="address_current"
+                              required
+                               style="resize: none;"
+                                id="Addressline"
+                                class="form-control"
+                                placeholder="ABC Palace ,123 Road"
+                                aria-label="Hi, Do you have a moment to talk Joe?"
+                                aria-describedby="basic-icon-default-message2"
+                              ></textarea>
+                            </div>
+                          </div>
+                          </div>
+                           <b style="color: red;">Note:</b><span> Correspondence Address!!
+                            <input type="checkbox" name="" id="" style="position: relative; left: 10px; top: 1px;"> <span style="position: relative;left: 10px;">Same as Permanent Address</span>
+                           </span>
+                           <hr style="border: 1px solid ">
+                             <div class="row">
+                              <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">State</label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-map"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                                  name="state_permanent" 
+                                  id="state2" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option selected disabled>Select State</option>
+                               <option  value="Bihar">Bihar</option>
+                               <option value="Up">Up</option>
+                               <option value="Rajasthan">Rajasthan</option>
+                               <option  value="Maharashtra">Maharashtra</option>
+                               <option value="West Bengal">West Bengal</option>
+                             </select>
+                             </div>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">District</label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-buildings"></i
+                                >
+                              </span>
+                              <select class="form-select" 
+                                  name="district_permanent"
+                                  id="district2" 
+                                  aria-label="District Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option selected disabled>Select District</option>
+                               <option  value="Patna">Patna</option>
+                               <option value="Buxar">Buxar</option>
+                               <!-- <option value="Inactive"></option>
+                               <option value="Inactive"></option>
+                               <option value="Inactive"></option> -->
+                             </select>
+                             </div>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">pin</label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"> 
+                              <i class="bx bx-map-pin"></i>
+                              </span>
+                              <input
+                              name="pin_permanent"
+                                type="text"
+                                maxlength="6"
+                                class="form-control"
+                                id="pin2"
+                                placeholder="Pin Code"
+                                aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2"
+                              /> 
+
+                            </div>
+                            <span class="error-msg"></span>
+                        </div>
+                      </div>
+                           <div class="row">
+                           <div class="mb-3">
+                            <label class="form-label" for="basic-icon-default-message">Address</label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-message2" class="input-group-text"
+                                >
+                                <!-- <i class="bx bx-comment"></i
+                              > -->
+                            </span>
+                              <textarea
+                              name="address_permanent"
+                                style="resize: none;"
+                                id="Addressline1"
+                                class="form-control"
+                                placeholder="ABC Palace ,123 Road"
+                                aria-label="Hi, Do you have a moment to talk Joe?"
+                                aria-describedby="basic-icon-default-message2"
+                              ></textarea>
+                            </div>
+                          </div>
+                          </div>
+                            <b style="color: red;">Note:</b><span> Upload Documents</span><hr style="border: 1px solid ">
+                             <div class="row">
+                            <!-- Photo Upload -->
+                             <div class="col-md-3 mb-3">
+                               <label class="form-label fw-bold">Photo <span class="text-danger">*</span></label>
+                               <div class="file-upload-box" >
+                                 <input  name="photo" required type="file" class="form-control" id="photo3">
+                               </div>
+                             </div> 
+
+                            <!-- Aadhaar Upload -->
+                             <div class="col-md-3 mb-3">
+                               <label  class="form-label fw-bold">Aadhaar Pic <span class="text-danger">*</span></label>
+                               <div class="file-upload-box">
+                                 <input  name="aadhaar_photo" required type="file" class="form-control" id="aadhaar3">
+                               </div>
+                             </div> 
+
+                           <!-- Signature Upload -->
+                             <div class="col-md-3 mb-3">
+                               <label class="form-label fw-bold">Signature</label>
+                               <div class="file-upload-box" >
+                                 <input  name="signature" type="file" class="form-control"  id="signature3">
+                               </div>
+                             </div>
+
+                           <!-- Certificate Upload -->
+                             <div class="col-md-3 mb-3">
+                               <label class="form-label fw-bold">Certificate </label>
+                               <div class="file-upload-box">
+                                 <input  name="certificate"type="file" class="form-control"  id="certificate3">
+                               </div>
+                             </div>
+                           </div>
+                        
+                          
+                          <button type="submit" class="btn btn-success" id="submit1" style="width: 150px; height: 40px; position: relative; left: 330px; background-color: green; margin-top: 15px;"><i class="bx bx-check" style="position: relative; left: -5px; top: -2px;"></i><b>Submit</b></button>
+                          <button type="reset" class="btn btn-danger" id="reset"style="width: 150px; height: 40px; position: relative; left: 380px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px;"></i><b>Reset</b></button>
+                        </form> 
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+                
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+    <!-- SweetAlert v1 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      $('#user-entry').submit(function (e) { 
+          e.preventDefault();
+          Swal.fire({
+              icon:"question",
+              title: "Do you want to Insert Data ?",
+              showCancelButton: true,
+              confirmButtonText: "Yes",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                var formData = new FormData();
+
+                formData.append('csrfmiddlewaretoken', $('input[name="csrfmiddlewaretoken"]').val());
+                formData.append('joining_date', $('#date').val());
+                formData.append('user_id', $('#uid').val());
+                formData.append('name', $('#sname').val());
+                formData.append('father_name', $('#fname').val());
+                formData.append('mother_name', $('#mname').val());
+                formData.append('gender', $('input[name="gender"]:checked').val());
+                formData.append('dob', $('#dob').val());
+                formData.append('contact_number', $('#cont').val());
+                formData.append('alternate_number', $('#cont2').val());
+                formData.append('email', $('#email1').val());
+                formData.append('aadhaar_number', $('#aadhaar').val());
+                formData.append('qualification', $('#qualification').val());
+                formData.append('position', $('#position1').val());
+                formData.append('salary', $('#salary').val());
+                formData.append('status', $('#status1').val());
+
+                formData.append('state_current', $('#state1').val());
+                formData.append('district_current', $('#district1').val());
+                formData.append('pin_current', $('#pin1').val());
+                formData.append('address_current', $('#Addressline').val());
+
+                formData.append('state_permanent', $('#state2').val());
+                formData.append('district_permanent', $('#district2').val());
+                formData.append('pin_permanent', $('#pin2').val());
+                formData.append('address_permanent', $('#Addressline1').val());
+
+                // Files
+                formData.append('photo', $('#photo3')[0].files[0]);
+                formData.append('aadhaar_photo', $('#aadhaar3')[0].files[0]);
+                formData.append('signature', $('#signature3')[0].files[0]);
+                formData.append('certificate', $('#certificate3')[0].files[0]);
+
+                {% comment %} console.log(formData); {% endcomment %}
+                 $.ajax({
+                  type: "POST",
+                  url: '{% url "userentry" %}',
+                  // data: FormData,
+                  processData: false,  
+                  contentType: false,  
+                  data: formData,
+                  success: function (response) {
+                    //  console.log(response);
+                    if(response.success == 200){
+                       Swal.fire({
+                        title: response.title,
+                        icon: response.icon,
+                        text: response.message,
+                        
+                      });
+                    }
+                    else{
+                        Swal.fire({
+                        title: "Oops...!",
+                        icon: response.icon,
+                        text: response.message,
+                        
+                      });
+                    }
+                  }
+                 });
+              } 
+         });
+      });
+    </script>
+{% endblock content %}

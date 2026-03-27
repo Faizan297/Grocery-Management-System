@@ -1,0 +1,188 @@
+{% extends "adminbase.html" %}
+{% block content %}
+          <div class="">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <span style="font-size: 30px; font-weight: bold;">Order</span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/order/</span>service</h5>
+              <!-- <a href="Order-entry.html"><button type="Entry" class="" style="width: 100px; height: 40px; position: relative; left: 1012px;top: -70px; background-color:#868686 ; border: 1px solid #868686; color: #fff; border-top-left-radius:10px ; border-bottom-left-radius:10px ;" >Entry</button></a>
+              <a href="Order-service.html"><button type="service" class="" style="width: 100px; height: 40px; position: relative; left: 1007px;top: -70px; background-color:  #17a2b8; border: 1px solid  #17a2b8; color: #fff;  border-top-right-radius:10px ; border-bottom-right-radius:10px ;" >Service</button></a>
+               -->
+              <!-- Basic Layout -->
+              <div class="row" style="margin-top: px;">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                     <div class="card-header d-flex justify-content-between align-items-center " id="search-show" style=" background-color: rgb(18, 2, 89); height: 50px;" >
+                      <h4 class="mb-0" style="color: white;">Service</h4>
+                      <a href="{% url 'orderentry' %}"> <button style="border-radius: 10px; height: 35px; width: 110px; background-color: #00C2FF; color: #ffff; position: relative; left: 10px;font-size: 18px;">+ Add New</button> </a>
+                      
+                     </div>
+                    <div class="card-body" style="margin-top: 20px;" id="search-hide">
+                      <form method="post">
+                       {% csrf_token %}
+                        <div class="row">
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">order date</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-calendar"></i
+                                ></span>
+                            <input
+                              name="order_date"
+                              type="date"
+                              id="date"
+                              class="form-control"
+                              placeholder=" Order Date"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                  
+                          </div>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-email">order id</label>
+                           <div class="input-group input-group-merge">
+                            <span class="input-group-text"> <i class="menu-icon tf-icons bx bx-receipt"></i></span>
+                            <select name="order_id" id="order" class="form-select">
+                              <option value=""  selected disabled>Select Order ID</option>
+                              {% for x in order_details %}
+                                 <option value="{{x.Order_ID}}">{{x.Order_ID}}</option>
+                              {% endfor %}
+
+
+                            </select>
+                           </div>
+                          </div>
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">customer id</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-user"></i></span>
+            
+                            <select name="customer_id" id="cid" class="form-select">
+                              <option value=""  selected disabled>Select Customer ID</option>
+                              {% for x in order_details %}
+                                 <option value="{{x.Customer_ID}}">{{x.Customer_ID}}</option>
+                              {% endfor %}
+
+                            </select>
+                          </div>
+                         </div>
+                        </div>
+                          <button type="submit"  class="btn btn-success" id="s8" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-search" style="position: relative; left: -5px; top: -2px;"></i><b>Search</b></button>
+                          <button type="reset" class="btn btn-danger" id="reset"style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px; "></i><b>Reset</b></button>
+                     </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           <div class="card">
+              <div class="card-body">
+                <div class="alert alert-primary">Records :-</div>
+                <div class="table-responsive" style="overflow-x: auto; max-height: 400px;">
+                {% if filter_data is not None %}
+                  {% if filter_data  %}
+                   <span class="alert-primary">Total Records :- {{ filter_data|length }}</span>
+                    <table class="table  table-hover mb-0 w-100">
+                        <thead class="bg-dark">
+                            <tr class="text-center" style="font-size:14px;">
+                                <th scope="col" style="font-size: 11px; color: white; width: 5%;">SR.NO</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 15%;">Order_date</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Order_ID</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">User_ID</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 15%;">Customer_ID</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Amount</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Disc_amount</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">tax</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">pay_amount</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Status</th>
+                                <th colspan="3" scope="col" style="font-size: 11px; color: white;width: 20%;" class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for x in filter_data %}
+                            <tr class="text-center">
+                                <td>{{ forloop.counter }}</td>
+                                <td class="text-nowrap text-center">{{x.Order_date}}</td>
+                                <td>{{x.Order_ID}}</td>
+                                <td>{{x.User_ID}}</td>
+                                <td>{{x.Customer_ID}}</td>
+                                <td>{{x.Amount}}</td>
+                                <td>{{x.Disc_amount}}</td>
+                                <td>{{x.tax}}</td>
+                                <td>{{x.pay_amount}}</td>
+                                <td>{{x.Status}}</td>
+                                <td>
+                                  <a href="/admin/User_payment_update/{{x.User_ID.User_ID}}/"><button class="btn btn-success btn-sm rounded-pill d-inline-flex align-items-center px-3 shadow-sm">
+                                    <i class="bi bi-pencil-square me-1"></i> Update
+                                  </button></a>
+                                </td>
+
+                                <td>
+                                  <a href="/admin/user_delete/{{x.User_ID}}/"><button class="btn btn-danger btn-sm rounded-pill d-inline-flex align-items-center px-3 shadow-sm">
+                                    <i class="bi bi-trash3-fill me-1"></i> Delete
+                                  </button></a>
+                                </td>
+
+                                <td>
+                                  <a href=""><button class="btn btn-secondary btn-sm rounded-pill d-inline-flex align-items-center px-3 shadow-sm">
+                                    <i class="bi bi-printer-fill me-1"></i> Print
+                                  </button></a>
+                                </td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                  {% else %}
+                   <div class="alert alert-warning text-center m-3">
+                     No records found. Please try different search criteria !
+                  {% endif %}
+                {% endif %}
+                </div>
+              </div>
+             </div>
+
+                          
+                
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+
+
+
+                  <!-- <a
+                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Support</a
+                  > -->
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+   
+{% endblock content %}

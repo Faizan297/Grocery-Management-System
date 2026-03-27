@@ -1,0 +1,260 @@
+{% extends "adminbase.html" %}
+{% block content %}
+         <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <span style="font-size: 30px; font-weight: bold;">Order Item </span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/Order Item/</span>Entry</h5>
+              {% comment %} <a href="Order-item-entry.html"><button type="Entry" class="" style="width: 100px; height: 40px; position: relative; left: 1012px;top: -70px; background-color:#868686 ; border: 1px solid #868686; color: #fff; border-top-left-radius:10px ; border-bottom-left-radius:10px ;" >Entry</button></a>
+              <a href="order-item-service.html"><button type="service" class="" style="width: 100px; height: 40px; position: relative; left: 1007px;top: -70px; background-color:  #17a2b8; border: 1px solid  #17a2b8; color: #fff;  border-top-right-radius:10px ; border-bottom-right-radius:10px ;" >Service</button></a> {% endcomment %}
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center" style=" background-color: rgb(18, 2, 89); height: 50px;">
+                      <h4 class="mb-0" style="color: white;">Entry</h4>
+                         <a href="{% url 'orderitem' %}"><button class="btn btn-light btn-sm service-btn">
+                            <i class="" style=" position: relative;left: 4px; top: -3px;"></i>
+                            <span>Service</span>
+                        </button></a>
+                      
+                    </div>
+                    <div class="card-body" style="margin-top: 20px;">
+                    <form  method="post"  id="order_item_entry">
+                     {% csrf_token %}
+                        <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">Order Item ID<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-receipt"></i></span>
+                            <input
+                              name="order_item_id"
+                              required
+                              type="text"
+                              class="form-control"
+                              id="category"
+                              placeholder=" Order Item ID"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email"> order ID<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"> <i class="menu-icon tf-icons bx bx-receipt"></i></span>
+                            <input
+                              name="order_id"
+                              required
+                              type="text"
+                              id="user"
+                              class="form-control"
+                              placeholder="Order ID"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                            <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-phone">product ID<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-cube"></i></span>
+                            <input
+                              name="product_id"
+                              required
+                              type="text"
+                              id="prid"
+                              class="form-control phone-mask"
+                              placeholder="Product ID "
+                              aria-label="658 799 8941"
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                       </div>
+                        <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">quantity<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-package"></i
+                                ></span>
+                            <input
+                              name="quantity"
+                              required
+                              type="text"
+                              id="pin1"
+                              class="form-control"
+                              placeholder="Quantity"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div> 
+                            <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">Price<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                                ></span>
+                            <input
+                              name="Price"
+                              required
+                              type="text"
+                              id="pay"
+                              class="form-control"
+                              placeholder="Rate Price"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div> 
+                           <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email"> disc amount<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                              ></span>
+                            <input
+                              name="disc_amount"
+                              required
+                              type="text"
+                              id="disc"
+                              class="form-control"
+                              placeholder="Discount Amount"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                       </div>
+                        <div class="row">
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">Sub Total<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                                ></span>
+                            <input
+                              name="Sub_Total"
+                              required
+                              type="text"
+                              id="tax"
+                              class="form-control"
+                              placeholder="Sub Total Amount"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                        </div> 
+                          <button type="submit"  class="btn btn-success" id="s10" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-check" style="position: relative; left: -5px; top: -2px;"></i><b>Submit</b></button>
+                          <button type="reset" class="btn btn-danger" style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px; "></i><b>Reset</b></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+                          
+                
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+
+
+
+                  <!-- <a
+                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Support</a
+                  > -->
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+   
+                 <!-- SweetAlert v1 CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      $('#order_item_entry').submit(function (e) { 
+         e.preventDefault();
+        // console.log('Form submit called');
+        Swal.fire({
+          icon:'question',
+          title: "Do you want to insert Data ?",
+          showCancelButton: true,
+          confirmButtonText: "Yes",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let formdata=new FormData(document.getElementById('order_item_entry'))
+            // console.log(formdata);
+            
+            $.ajax({
+              type: "POST",
+              url: "{% url 'orderitementry' %}",
+              data: formdata,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                // console.log(response);
+                if(response.success==200){
+                  Swal.fire({
+                      title: response.title,
+                      text: response.message,
+                      icon: response.icon
+                      
+                    });
+                }
+                else{
+                      Swal.fire({
+                      title: response.title,
+                      text: response.message,
+                      icon: response.icon
+                      
+                    });
+                }
+                
+                
+              }
+            });
+          }
+        });
+
+        
+       
+        
+      });
+    </script>
+{% endblock content %}

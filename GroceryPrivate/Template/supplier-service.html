@@ -1,0 +1,208 @@
+{% extends "adminbase.html" %}
+{% block content %}
+         <div class="">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <span style="font-size: 30px; font-weight: bold;">Service</span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/Supplier/</span>Service</h5>
+            
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center" id="search-show" style=" background-color: rgb(18, 2, 89); height: 50px;" >
+                      <h4 class="mb-0" style="color: white;">Service</h4>
+
+                      <a href="{% url 'suppentry'%}"> <button style="border-radius: 10px; height: 35px; width: 110px; background-color: #00C2FF; color: #ffff; position: relative; left: 10px;font-size: 18px;">+ Add New</button> </a>
+                      
+                    </div>
+                    <div class="card-body" id="search-hide" style="margin-top: 20px;">
+                      <form  method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">supplier ID</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="bx bx-user"></i
+                            ></span>
+                            <select name="Supplier_ID" id="cid" class="form-select">
+                              <option value="" selected disabled> Select Supplier ID</option>
+                              {% for x in supplier_details %}
+                              <option value="{{x.Supplier_ID}}">{{x.Supplier_ID}}</option>
+
+                              {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">NAME</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-user"></i></span>
+                            <input
+                              name="Supplier_Name"
+                              type="text"
+                              id="sname"
+                              class="form-control"
+                              placeholder="Name"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                            <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
+                          </div>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-phone">Contact Number</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ><i class="bx bx-phone"></i
+                            ></span>
+                            <input
+                              name="Contact_Number"
+                              type="text"
+                              id="cont"
+                              class="form-control phone-mask"
+                              placeholder="Contact Number"
+                              aria-label="658 799 8941"
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    
+                       
+                        <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                        <label class="form-label" for="basic-icon-default-fullname">Status</label>
+                       <div class="input-group input-group-merge">
+                         <span id="basic-icon-default-fullname2" class="input-group-text">
+                           <i class="bx bx-user"></i>
+                         </span>
+                         <select
+                           name="status"
+                           class="form-select"
+                           id="status1"
+                           aria-describedby="basic-icon-default-fullname2">
+                           <option selected disabled>Select Status</option>
+                           <option value="active">Active</option>
+                           <option value="inactive">Inactive</option>
+                         </select>
+                       </div>
+                     </div>
+                     </div>
+                        
+                          <button type="" class="btn btn-success"  id="s26" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-search" style="position: relative; left: -5px; top: -2px;"></i><b>Search</b></button>
+                          <button type="reset" class="btn btn-danger" style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px;"></i><b>Reset</b></button>
+                     </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>       
+           <div class="card">
+            <div class="card-body">
+              <div class="alert alert-primary">Records :-</div>
+              <div class="table-responsive" style="overflow-x: auto; max-height: 400px;">
+                  {% if filter_data is not None %}
+                    {% if filter_data %}
+                     <span class="alert-primary">Total Records :- {{ filter_data|length }}</span>
+                     <table class="table  table-hover mb-0 w-100">
+                        <thead class="bg-dark">
+                            <tr class="text-center" style="font-size:14px;">
+                                <th scope="col" style="font-size: 11px; color: white; width: 5%;">SR.NO</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 15%;">Entry_date</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Supplier_ID</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Supplier_name</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 15%;">Contact_number</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Email</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">GST_Number</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Status</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">State</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">District</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Pin</th>
+                                <th scope="col" style="font-size: 11px; color: white;width: 20%;">Address</th>
+                                <th colspan="3" scope="col" style="font-size: 11px; color: white;width: 20%;" class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for x in filter_data %}
+                            <tr class="text-center">
+                                <td>{{ forloop.counter }}</td>
+                                <td class="text-nowrap text-center">{{x.Entry_date}}</td>
+                                <td>{{x.Supplier_ID}}</td>
+                                <td>{{x.Name}}</td>
+                                <td>{{x.Contact_Number}}</td>
+                                <td>{{x.Email}}</td>
+                                <td>{{x.GST_Number}}</td>
+                                <td>{{x.Status}}</td>
+                                <td>{{x.State}}</td>
+                                <td>{{x.District}}</td>
+                                <td>{{x.Pin}}</td>
+                                <td>{{x.Address}}</td>
+                                <td>
+                                  <a href="/admin/Supplier_update/{{x.Supplier_ID}}/"><button class="btn btn-success btn-sm rounded-pill d-inline-flex align-items-center px-3 shadow-sm">
+                                    <i class="bi bi-pencil-square me-1"></i> Update
+                                  </button></a>
+                                </td>
+
+                                <td>
+                                  <a href="/admin/supplier_delete/{{x.Supplier_ID}}/"><button class="btn btn-danger btn-sm rounded-pill d-inline-flex align-items-center px-3 shadow-sm">
+                                    <i class="bi bi-trash3-fill me-1"></i> Delete
+                                  </button></a>
+                                </td>
+
+                                <td>
+                                  <a href=""><button class="btn btn-secondary btn-sm rounded-pill d-inline-flex align-items-center px-3 shadow-sm">
+                                    <i class="bi bi-printer-fill me-1"></i> Print
+                                  </button></a>
+                                </td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                     <div class="alert alert-warning text-center m-3">
+                       No records found. Please try different search criteria !
+                    {% endif %}
+                  {% endif %}
+              </div>
+            </div>
+           </div>
+
+               
+            
+                          
+                
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+{% endblock content %}

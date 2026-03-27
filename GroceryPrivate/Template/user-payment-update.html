@@ -1,0 +1,185 @@
+{% extends "adminbase.html" %}
+{% block content %}
+         <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <span style="font-size: 30px; font-weight: bold;">Payment </span>
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/User Payment/</span>Update</h5>
+              {% comment %} <a href="user-payment-entry.html"><button type="Entry" class="" style="width: 100px; height: 40px; position: relative; left: 1012px;top: -70px; background-color:#868686 ; border: 1px solid #868686; color: #fff; border-top-left-radius:10px ; border-bottom-left-radius:10px ;" >Entry</button></a>
+              <a href="user-payment-update.html"><button type="service" class="" style="width: 100px; height: 40px; position: relative; left: 1007px;top: -70px; background-color:  #17a2b8; border: 1px solid  #17a2b8; color: #fff;  border-top-right-radius:10px ; border-bottom-right-radius:10px ;" >Update</button></a> {% endcomment %}
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                   <div class="card-header d-flex justify-content-between align-items-center"style=" background-color: rgb(18, 2, 89); height: 50px;" >
+                      <h4 class="mb-0" style="color: white;">Update</h4>
+                      <a href="{% url 'userpaymententry' %}"> <button style="border-radius: 10px; height: 35px; width: 110px; background-color: #00C2FF; color: #ffff; position: relative; left: 10px;font-size: 18px;">+ Add New</button> </a>
+                      
+                    </div>
+                  
+                    <div class="card-body" style="margin-top: 20px;">
+                     <form method="post" id="userpayment">
+                        {% csrf_token %}
+                        <div class="row">
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">Payment Date</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-calendar"></i></span>
+                            <input
+                              value="{{ data.updatedata.Payment_Date|date:'Y-m-d' }}"
+                              name="Payment_Date"
+                              type="date"
+                              class="form-control"
+                              id="date"
+                              placeholder=" Order Item ID"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-phone">user ID <span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ><i class="menu-icon tf-icons bx bx-user"></i></span>
+                              <select name="User_ID" id="uid" class="form-select">
+                                <option value="" selected disabled> Select User ID </option>
+                                    {% for x in users %}
+                                      <option value="{{x.User_ID.User_ID}}">{{x.User_ID.User_ID}}</option>
+                                      {% endfor %}
+                                 
+                                
+                              </select>
+
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">Amount<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                                ></span>
+                            <input
+                              name="Amount"
+                              value="{{data.updatedata.Amount}}"
+                              type="text"
+                              id="disc"
+                              class="form-control"
+                              placeholder="Paid Amount"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div> 
+                        </div>
+                          <div class="row">
+                           <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">payment mode <span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                                ></span>
+                             <select class="form-select" 
+                                  name="Payment_Mode"
+                            
+                                  id="state1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option value="" selected disabled>Select Payment Mode</option>
+                               <option value="UPI" {% if data.updatedata.Payment_mode == "UPI" %}selected{% endif %}>UPI</option>
+                               <option value="Cards" {% if data.updatedata.Payment_mode == "Cards" %}selected{% endif %}>Cards</option>
+                               <!-- <option value=""></option>
+                               <option value=""></option>
+                               <option value=""></option> -->
+                             </select>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">balance</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-money"></i
+                                ></span>
+                            <input
+                               value="{{data.updatedata.Balance}}"
+                              name="Balance"
+                              type="text"
+                              id="tax"
+                              class="form-control"
+                              placeholder="Balance"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div> 
+                        <div class="col-12 col-md-4 mb-3">
+                         <label class="form-label" for="basic-icon-default-fullname">Status</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text">
+                              <i class="bx bx-user"></i>
+                            </span>
+                             <select class="form-select" 
+                                  name="Status"
+                                  id="status1" 
+                                  aria-label="Status Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option selected disabled>Select Status</option>
+                               <option value="Active" {% if data.updatedata.Status == "Active" %}selected{% endif %}>Active</option>
+                               <option value="Inactive" {% if data.updatedata.Status == "Inactive" %}selected{% endif %}>Inactive</option>
+                             </select>
+                        </div>
+                        </div>
+                    </div>
+                          <button type="submit"  class="btn btn-success" id="s30" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-check" style="position: relative; left: -5px; top: -2px;"></i><b>Submit</b></button>
+                          <button type="reset" class="btn btn-danger" id="reset"style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px; "></i><b>Reset</b></button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                          
+                
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+
+
+
+                  <!-- <a
+                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Support</a
+                  > -->
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+   
+{% endblock content %}

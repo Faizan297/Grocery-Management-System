@@ -1,0 +1,313 @@
+{% extends "adminbase.html" %}
+{% block content %}
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+               <div class="row" style="margin-top: -20px;"></div>
+              <span style="font-size: 30px; font-weight: bold;">Registration Form</span>
+               <!-- <div class="row" style="margin-top: -15px;"></div> -->
+              <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/Customer/</span>Entry</h5>
+              {% comment %} <a href="customer-entry.html"><button type="Entry" class="" style="width: 100px; height: 40px; position: relative; left: 1000px;top: -70px; background-color:#868686 ; border: 1px solid #868686; color: #fff; border-top-left-radius:10px ; border-bottom-left-radius:10px ;" >Entry</button></a>
+              <a href="Customer-service.html"><button type="service" class="" style="width: 100px; height: 40px; position: relative; left: 995px;top: -70px; background-color:  #17a2b8; border: 1px solid  #17a2b8; color: #fff;  border-top-right-radius:10px ; border-bottom-right-radius:10px ;" >Service</button></a> {% endcomment %}
+            
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center" style=" background-color: rgb(18, 2, 89); height: 50px;">
+                      <h4 class="mb-0" style="color: white;">Entry</h4>
+                      <a href="{% url 'customer' %}"><button class="btn btn-light btn-sm service-btn">
+                            <i class="" style=" position: relative;left: 4px; top: -3px;"></i>
+                            <span>Service</span>
+                        </button></a>
+                      <!-- Basic Info -->  
+                    </div>
+                    <div class="card-body" style="margin-top: 20px;">
+                    <form method="post" id="customer_entry">
+                     {% csrf_token %}
+                        <div class="row">
+                          <!-- <hr> -->
+                         <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">CREATED AT</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="bx bx-calendar"></i
+                            ></span>
+                            <input
+                              name="Entry_date"
+                              type="date"
+                              class="form-control"
+                              id="date"
+                              placeholder="created at"
+                              aria-label="created at"
+                              aria-describedby="created-at-icone"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-fullname">CUSTOMER ID<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"
+                              ><i class="bx bx-user"></i
+                            ></span>
+                            <input
+                              name="customer_id"
+                              required
+                              type="text"
+                              class="form-control"
+                              id="cid"
+                              placeholder="Customer Id"
+                              aria-label="John Doe"
+                              aria-describedby="basic-icon-default-fullname2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                        
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">NAME<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-user"></i></span>
+                            <input
+                              name="name"
+                              required
+                              type="text"
+                              id="sname"
+                              class="form-control"
+                              placeholder="Name"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                            <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                         
+                      </div>
+                       <div class="row">
+                           <div class="col-12 col-md-4 mb-3">
+                           <label class="form-label" for="basic-icon-default-phone">Contact Number<span class="text-danger">*</span></label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"
+                              ><i class="bx bx-phone"></i
+                            ></span>
+                            <input
+                              name="contact_number"
+                              required
+                              type="text"
+                              id="cont"
+                              class="form-control phone-mask"
+                              placeholder="Contact Number"
+                              aria-label="658 799 8941"
+                              aria-describedby="basic-icon-default-phone2"
+                            />
+                          </div>
+                          <span class="error-msg"></span>
+                        </div>
+                          <div class="col-12 col-md-4 mb-3">
+                          <label class="form-label" for="basic-icon-default-email">Email</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                            <input
+                              name="email"
+                              type="text"
+                              id="email1"
+                              class="form-control"
+                              placeholder="Email"
+                              aria-label="john.doe"
+                              aria-describedby="basic-icon-default-email2"
+                            />
+                            <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">Status<span class="text-danger">*</span></label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-user"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                                  name="status"
+                                  required 
+                                  id="status1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option value="" selected disabled>Select Status</option>
+                               <option value="Active">Active</option>
+                               <option value="Inactive">Inactive</option>
+                             </select>
+                             </div>
+                             </div>
+                      </div>
+                          <b style="color: red;">Note:</b><span>Address!!</span><hr style="border: 1px solid ">
+                      <div class="row">
+                              <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">State</label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-map"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                                  name="state" 
+                                  id="state1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                               <option selected disabled>Select State</option>
+                               <option value="Bihar">Bihar</option>
+                               <option value="Up">Up</option>
+                               <option value="Rajasthan">Rajasthan</option>
+                               <option value="Maharashtra">Maharashtra</option>
+                               <option value="West Bengal">West Bengal</option>
+                             </select>
+                             </div>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                              <label class="form-label" for="basic-icon-default-fullname">District</label>
+                              <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                  <i class="bx bx-buildings"></i
+                                >
+                              </span>
+                              <select class="form-select"
+                                  name="district" 
+                                  id="district1" 
+                                  aria-label="Salary Dropdown" 
+                                  aria-describedby="basic-icon-default-fullname2">
+                                 <option selected disabled>Select District</option>
+                               <option value="Patna">Patna</option>
+                               <option value="Buxar">Buxar</option>
+                             </select>
+                             </div>
+                             </div>
+                             <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">pin</label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-fullname2" class="input-group-text"> 
+                              <i class="bx bx-map-pin"></i>
+                              </span>
+                              <input
+                                name="pin"
+                                type="text"
+                                class="form-control"
+                                id="pin1"
+                                placeholder="Pin Code"
+                                aria-label="John Doe"
+                                aria-describedby="basic-icon-default-fullname2"
+                              /> 
+
+                            </div>
+                        </div>
+                      </div>
+                              
+
+                           <div class="mb-3">
+                            <label class="form-label" for="basic-icon-default-message">Address</label>
+                            <div class="input-group input-group-merge">
+                              <span id="basic-icon-default-message2" class="input-group-text"
+                                >
+                                <!-- <i class="bx bx-comment"></i
+                              > -->
+                            </span>
+                              <textarea
+                               name="address"
+                               style="resize: none;"
+                                id="addressline"
+                                class="form-control"
+                                placeholder="ABC Palace ,123 Road"
+                                aria-label="Hi, Do you have a moment to talk Joe?"
+                                aria-describedby="basic-icon-default-message2"
+                              ></textarea>
+                            </div>
+                          </div>
+                          
+                          <button type="submit"  class="btn btn-success" id="s4" style="width: 150px; height: 40px; position: relative; left: 360px; background-color: green; margin-top: 15px;"><i class="bx bx-check" style="position: relative; left: -5px; top: -2px;"></i><b>Submit</b></button>
+                          <button type="reset" class="btn btn-danger" style="width: 150px; height: 40px; position: relative; left: 400px; background-color: red;margin-top: 15px;"><i class="bx bx-refresh" style="position: relative; left: -5px; top: -2px;"></i><b>Reset</b></button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Faizan</a>
+                </div>
+                {% comment %}  {% endcomment %}
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+   
+    <!-- SweetAlert v1 CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script>
+      $('#customer_entry').submit(function (e) { 
+        e.preventDefault();
+        // console.log('Form sybmit called');
+        Swal.fire({
+          icon:'question',
+          title: "Do you want to insert Data ?",
+          showCancelButton: true,
+          confirmButtonText: "Yes",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let formdata=new FormData(document.getElementById('customer_entry'))
+            console.log(formdata);
+            
+            $.ajax({
+              type: "POST",
+              url: "{% url 'customerentry' %}",
+              data: formdata,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                // console.log(response);
+                if(response.success==200){
+                  Swal.fire({
+                      title: response.title,
+                      text: response.message,
+                      icon: response.icon
+                      
+                    });
+                }
+                else{
+                   Swal.fire({
+                      title: response.title,
+                      text: response.message,
+                      icon: response.icon
+                      
+                    });
+                }
+                
+              }
+            });
+            
+          } 
+        });
+      });
+     </script>
+{% endblock content %}
