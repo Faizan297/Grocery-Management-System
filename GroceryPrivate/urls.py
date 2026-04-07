@@ -6,6 +6,12 @@ from GroceryPrivate import views
 
 urlpatterns = [
 
+    path('', views.login_page, name='home'),          # login page
+    path('auth_login/', views.auth_login, name='auth_login'),  # AJAX login
+    path('logout/', views.logout_view, name='logout'),         # logout
+
+    # path('', views.login_page, name='home'),  #root url
+    # path('logout/', views.logout_view, name='logout'),
     #User Urls
     path("Index/", views.Index,name="Index"),
     path("user_entry/",views.user_entry,name="userentry"),
@@ -67,7 +73,7 @@ urlpatterns = [
     path("page_connection/",views.page_connection,name="pageconnection"),
 
     # Author Urls
-    path("auth_login/",views.auth_login,name="authlogin"),
+    path("auth_login/",views.login_page,name="login_page"),
     path("auth_registration/",views.auth_registration,name="authregister"),
     path("auth_forgot/",views.auth_forgot,name="authforgot"),
     

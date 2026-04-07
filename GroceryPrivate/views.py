@@ -3,10 +3,47 @@ from django.shortcuts import render
 from GroceryPrivate import models
 from django.shortcuts import redirect
 from django.http import JsonResponse
+from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
 
-# Create your views here.
+from django.http import JsonResponse
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')   # goes to login page
+
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='/')
 def Index(request):
      return render(request,"index.html")
+
+def auth_login(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return JsonResponse({
+                "status": "success",
+                "redirect": "/admin/Index/"
+            })
+        else:
+            return JsonResponse({
+                "status": "error",
+                "message": "Invalid credentials"
+            })
+
+    return JsonResponse({"status": "error", "message": "Invalid request"})
+
+# Create your views here.
+# def Index(request):
+#      return render(request,"index.html")
 
 # USER ENTRY------------------------
 def user_entry(request):
@@ -1170,8 +1207,8 @@ def page_connection(request):
 def page_notification(request):
      return render(request,"pages-account-settings-notifications.html")
 # author
-def auth_login(request):
-     return render (request,"auth-login-basic.html")
+def login_page(request):
+    return render(request, "auth-login-basic.html")
 def auth_registration(request):
      return render(request,"auth-register-basic.html")
 def auth_forgot(request):

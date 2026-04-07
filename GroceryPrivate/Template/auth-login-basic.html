@@ -55,7 +55,7 @@
             <p class="mb-4">Please sign-in to your account</p>
 
             <form id="formAuthentication" class="mb-3">
-
+            {% csrf_token %}
               <!-- Role -->
               <div class="mb-3">
                 <label class="form-label">Role</label>
@@ -69,13 +69,13 @@
               <!-- Email -->
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="Enter your email" />
+                <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email" />
               </div>
 
               <!-- Password -->
               <div class="mb-3 form-password-toggle">
                 <label class="form-label" for="password">Password</label>
-                <input type="password" id="password" class="form-control" placeholder="•••••••••••" />
+                <input type="password" id="password" name="password" class="form-control" placeholder="•••••••••••" />
               </div>
 
               <!-- Submit Button -->
@@ -99,48 +99,55 @@
   </div>
 
   <!-- Core JS -->
-  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="../assets/vendor/libs/popper/popper.js"></script>
-  <script src="../assets/vendor/js/bootstrap.js"></script>
-  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="{% static 'assets/vendor/libs/jquery/jquery.js' %}"></script>
+  <script src="{% static 'assets/vendor/libs/popper/popper.js' %}"></script>
+  <script src="{% static 'assets/vendor/js/bootstrap.js' %}"></script>
+  <script src="{% static 'assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
   <script src="{% static 'assets/vendor/js/menu.js' %}"></script>
-  <script>
-$("#formAuthentication").on("submit", function(e) {
-    e.preventDefault();
+<script>
+  $(document).ready(function() {
+    $("#formAuthentication").on("submit", function(e) {
+        e.preventDefault();
 
-    let data = {
-        role: $("#role").val(),
-        email: $("#email").val(),
-        password: $("#password").val()
-    };
+        let data = {
+            role: $("#role").val(),
+            email: $("#email").val(),
+            password: $("#password").val()
+        };
 
-    $.ajax({
-        url: "auth_login.py",
-        type: "POST",
-        data: data,
-        dataType: "json",
-        success: function(res) {
-            if (res.status === "success") {
-                Swal.fire({
-                    icon: "success",
-                    title: "Login Successful!",
-                    timer: 1500
-                });
+        let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-                setTimeout(function() {
-                    window.location.href = res.redirect;
-                }, 1500);
+        $.ajax({
+            url: "/admin/auth_login/",
+            type: "POST",
+            data: data,
+            headers: {
+                "X-CSRFToken": csrftoken
+            },
+            dataType: "json",
+            success: function(res) {
+                if (res.status === "success") {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Login Successful!",
+                        timer: 1500
+                    });
 
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Login Failed",
-                    text: res.message
-                });
+                    setTimeout(function() {
+                        window.location.href = res.redirect;
+                    }, 1500);
+
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Login Failed",
+                        text: res.message
+                    });
+                }
             }
-        }
+        });
     });
-});
+  });
 </script>
 
 
